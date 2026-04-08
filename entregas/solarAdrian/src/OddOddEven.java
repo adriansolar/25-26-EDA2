@@ -1,12 +1,12 @@
 import java.util;
 
-public class FortyTenTenSixty {
-    private static final String[] SUMANDOS = {"FORTY", "TEN", "TEN"};
-    private static final String RESULTADO = "SIXTY";
+public class OddOddEven {
+    private static final String[] SUMANDOS = {"ODD", "ODD"};
+    private static final String RESULTADO = "EVEN";
 
     public static void main(String[] args) {
-        List<Character> letras = Arrays.asList('F', 'O', 'R', 'T', 'Y', 'E', 'N', 'S', 'I', 'X');
-        Set<Character> iniciales = new HashSet<>(Arrays.asList('F', 'T', 'S'));
+        List<Character> letras = Arrays.asList('O', 'D', 'E', 'V', 'N');
+        Set<Character> iniciales = new HashSet<>(Arrays.asList('O', 'E'));
         
         Map<Character, Integer> mapeo = new HashMap<>();
         if (backtrack(letras, 0, mapeo, new HashSet<>(), iniciales)) {
@@ -38,9 +38,8 @@ public class FortyTenTenSixty {
     private static boolean esValido(Map<Character, Integer> mapeo) {
         long s1 = aNumero(SUMANDOS[0], mapeo);
         long s2 = aNumero(SUMANDOS[1], mapeo);
-        long s3 = aNumero(SUMANDOS[2], mapeo); // El segundo TEN
         long res = aNumero(RESULTADO, mapeo);
-        return (s1 + s2 + s3) == res;
+        return (s1 + s2) == res;
     }
 
     private static long aNumero(String palabra, Map<Character, Integer> mapeo) {
@@ -50,8 +49,8 @@ public class FortyTenTenSixty {
     }
 
     private static void imprimirSolucion(Map<Character, Integer> mapeo) {
-        System.out.println("Solución para FORTY + TEN + TEN = SIXTY:");
-        System.out.println(aNumero(SUMANDOS[0], mapeo) + " + " + aNumero(SUMANDOS[1], mapeo) + " + " + aNumero(SUMANDOS[2], mapeo) + " = " + aNumero(RESULTADO, mapeo));
+        System.out.println("Solución para ODD + ODD = EVEN:");
+        System.out.println(aNumero(SUMANDOS[0], mapeo) + " + " + aNumero(SUMANDOS[1], mapeo) + " = " + aNumero(RESULTADO, mapeo));
         System.out.println("Mapeo: " + new TreeMap<>(mapeo) + "\n");
     }
 }
